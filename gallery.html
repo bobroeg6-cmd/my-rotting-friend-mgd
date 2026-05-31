@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея — my rotting friend</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 class="page-title">ГАЛЕРЕЯ</h1>
+
+    <div class="gallery-grid" id="galleryGrid"></div>
+
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="close" onclick="closeLightbox()">×</span>
+            <span class="prev" onclick="prevImage()">‹</span>
+            <img id="lightboxImg" src="" alt="">
+            <span class="next" onclick="nextImage()">›</span>
+        </div>
+    </div>
+
+    <script>
+        const photos = [
+            "images/gallery/1.jpg",
+            "images/gallery/2.jpg",
+            "images/gallery/3.jpg",
+            "images/gallery/4.jpg",
+            "images/gallery/5.jpg",
+            "images/gallery/6.jpg",
+            "images/gallery/7.jpg",
+            "images/gallery/8.jpg",
+            "images/gallery/9.jpg",
+            "images/gallery/10.jpg"
+        ];
+
+        let currentIndex = 0;
+        const grid = document.getElementById('galleryGrid');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        photos.forEach((src, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item border-wire';
+            item.innerHTML = `<img src="${src}" alt="Фото ${index + 1}">`;
+            item.onclick = () => openLightbox(index);
+            grid.appendChild(item);
+        });
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = photos[currentIndex];
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+            lightboxImg.src = photos[currentIndex];
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % photos.length;
+            lightboxImg.src = photos[currentIndex];
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "ArrowRight") nextImage();
+        });
+    </script>
+
+</body>
+<header class = "header">
+	<a href="index.html">
+		<img src = 'images/rat.png' alt = "my rotting friend" class = "header-logo">
+	</a>
+</header>
+</html>

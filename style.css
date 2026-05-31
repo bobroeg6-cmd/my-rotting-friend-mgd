@@ -1,0 +1,396 @@
+@font-face{
+	font-family: 'MyFont';
+	src: url('fonts/HomeVideo-Regular.otf') format('opentype');
+	font-weight:400;
+	font-color:white;
+	font-style:normal;
+	font-display:swap;}
+
+
+
+:root {
+    --black: #0a0a0a;
+    --red: #ff2222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 30px;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 1000;
+    border-bottom: 2px solid #111;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s;
+    filter: brightness(0.9);
+}
+
+.header-logo:hover {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+}
+
+
+body {
+    padding-top: 85px;
+    font-family: 'Roboto', sans-serif;
+    background: var(--black);
+    color: #ddd;
+    overflow-x: hidden; 
+    text-align:center;
+}
+
+
+.logo, h1, h2, h3, p, a, li, div, .page-title {
+    font-family: 'MyFont', sans-serif;
+}
+
+
+.hero {
+    height: 100vh;
+    background-image: url('images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.3), rgba(10,10,10,0.9));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.side-photo {
+    width: 180px;
+    height: 240px;
+    object-fit: cover;
+}
+
+.logo {
+    font-size: 5.8rem;
+    letter-spacing: 10px;
+    text-shadow: 0 0 30px rgba(0,0,0,0.9);
+}
+
+.tagline {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    opacity: 0.95;
+    letter-spacing: 3px;
+}
+
+.cards {
+    padding: 80px 20px 100px;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+    background: var(--black);
+}
+
+.card {
+    width: 320px;
+    height: 440px;
+    background: #111;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    border: 8px solid transparent;
+    border-image: url('images/barbed-wire.png') 30 round;
+    border-image-slice: 30;
+}
+
+.card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.card:hover img {
+    transform: scale(1.08);
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 35px 25px;
+    background: linear-gradient(to top, rgba(0,0,0,0.97), transparent);
+}
+
+.card h3 {
+    font-size: 1.9rem;
+    margin-bottom: 8px;
+}
+
+
+.merch {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-bottom: 80px;
+}
+
+.merch-item {
+    text-align: center;
+    max-width: 280px;
+}
+
+.merch-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border: 8px solid #111;
+    border-image: url('images/barbed-wire.png') 30 round;
+    border-image-slice: 30;
+}
+
+.merch-item h3 {
+    margin: 15px 0 5px;
+    font-size: 1.6rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: var(--red);
+    font-weight: bold;
+}
+
+.album-section {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.album-cover img {
+    width: 100%;
+    max-width: 420px;
+    border: 12px solid #111;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+}
+
+.tracklist h2 {
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+}
+
+.tracklist ol {
+    list-style: none;
+    counter-reset: track;
+}
+
+.tracklist li {
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+    font-size: 1.1rem;
+}
+
+.tracklist li:before {
+    content: counter(track) ". ";
+    color: #666;
+    margin-right: 10px;
+}
+
+.listen-btn {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--black);
+    color: white;
+    font-size: 1.3rem;
+    text-decoration: none;
+    border: 4px solid #111;
+    transition: all 0.3s;
+}
+
+.listen-btn:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 8px solid #111;
+    border-image: url('images/barbed-wire.png') 30 round;
+    border-image-slice: 30;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.member-card {
+    text-align: center;
+    background: #111;
+    padding-bottom: 20px;
+    transition: all 0.4s;
+    border: 8px solid #111;
+    border-image: url('images/barbed-wire.png') 30 round;
+    border-image-slice: 30;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+}
+
+.member-card img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.member-info h3 {
+    margin: 20px 0 8px;
+    font-size: 1.8rem;
+}
+
+.member-info p {
+    color: #aaa;
+    padding: 0 15px;
+}
+
+
+.social {
+    text-align: center;
+    margin: 120px 0 80px;
+    padding: 0 20px;
+}
+
+.social h2 {
+    font-size: 2.4rem;
+    margin-bottom: 50px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 10px 25px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--red);
+    transform: translateY(-4px);
+}
+
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.98);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox-content {
+    position: relative;
+    max-width: 95%;
+    max-height: 95vh;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border: 5px solid #111;
+}
+
+.close, .prev, .next {
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.close { top: -60px; right: 10px; }
+.prev { left: -70px; top: 50%; transform: translateY(-50%); }
+.next { right: -70px; top: 50%; transform: translateY(-50%); }
+
+.close:hover, .prev:hover, .next:hover { opacity: 1; }
